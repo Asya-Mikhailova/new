@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  background: url(https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1440&q=80);
+  background-size: cover;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/*BUTTONS STYLING*/
+
+.header {
+  height: 100px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 50px;
+}
+
+.header_buttons {
+  display: flex;
+}
+
+.search_area {
+  display: flex;
+  margin-left: 80px;
+}
+
+.button {
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+}
+
+.button-search {
+  width: 100px;
+}
+
+.button-language {
+  width: 70px;
+}
+
+input {
+  width: 400px;
+  height: 40px;
+}
+
+input[type='radio'] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+input[type='radio'] + label {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+label {
+  color: #fff;
+  font-size: 18px;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 13px;
+}
+
+input[type='radio']:checked + label {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.radio-group {
+  display: flex;
+  margin: 11px;
+  overflow: hidden;
+}
+
+.search-area input::placeholder {
+  padding-left: 10px;
+}
+
+.search-area input:focus {
+  outline: rgba(0, 0, 0, 0.5);
+}
+
+/**/
+
+h1 {
+  margin-left: 100px;
+  margin-top: 80px;
+  color: #fff;
+  font-size: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.temperature {
+  margin-left: 100px;
+  margin-top: 40px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.date-time {
+  display: flex;
+  width: 500px;
+}
+
+.date,
+.time {
+  margin-left: 100px;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: lighter;
+}
+
+.map {
+  width: 450px;
+  height: 450px;
+  border: none;
+  border-radius: 10px;
+  background: antiquewhite;
+  margin-top: 250px;
+  margin-left: 800px;
+}
+
+.info {
+  display: flex;
+}
