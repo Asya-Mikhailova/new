@@ -1,6 +1,7 @@
 getLocation();
 changeBackground();
 setInterval(getDate, 1000);
+initMap();
 
 //DEFINE LOCATION & WEATHER
 function getLocation() {
@@ -19,18 +20,14 @@ function getLocation() {
         const temperature = document.querySelector('.temperature');
 
         const api_weather = `http://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${long}&key=${key}`;
-        const api_location = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en
-                `;
+        const api_location = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyA65pqh1Xz6qrNwwiS-UXl38YDUBB2hbAs`;
 
         fetch(api_location)
           .then((response) => {
             return response.json();
           })
           .then((data) => {
-            city = data.localityInfo.administrative[2].name.toUpperCase();
-            country = data.countryName.toUpperCase();
-
-            location = `${city}, ${country}`;
+            location = data.results[8].formatted_address;
             document.querySelector('h1').innerHTML = location;
           });
 
@@ -40,8 +37,12 @@ function getLocation() {
           })
           .then((data) => {
             console.log(data);
+            let iconCode = data.data[0].weather.icon;
             temp = Math.round(data.data[0].temp);
-            temperature.innerHTML = `${temp} C&deg`;
+            temperature.innerHTML = `${temp}&deg`;
+            document.querySelector(
+              '.icon'
+            ).innerHTML = `<img src="https://www.weatherbit.io/static/img/icons/${iconCode}.png">`;
 
             //CONVERTING TEMPERATURE
 
@@ -56,7 +57,7 @@ function getLocation() {
               //   return;
               // }
               temp = Math.round(temp * 1.8 + 32);
-              temperature.innerHTML = `${temp} F&deg`;
+              temperature.innerHTML = `${temp}&deg`;
             });
 
             celsius.addEventListener('click', () => {
@@ -66,9 +67,7 @@ function getLocation() {
               //   return;
               // }
               temp = Math.round(((temp - 32) * 5) / 9);
-              document.querySelector(
-                '.temperature'
-              ).innerHTML = `${temp} C&deg`;
+              document.querySelector('.temperature').innerHTML = `${temp}&deg`;
             });
           });
       });
@@ -81,7 +80,6 @@ function changeBackground() {
   let background = document.body.style.backgroundImage;
   let backgroundCount = 0;
   let newBackground;
-  console.log(background);
   const images = [
     'https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1440&q=80',
     'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80',
